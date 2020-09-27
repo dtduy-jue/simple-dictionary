@@ -1,3 +1,8 @@
+/**
+ *  Class Word cung cấp 1 định nghĩa gồm 1 cặp từ Tiếng Anh - Tiếng Việt.
+ *
+ * @author Đinh Tùng Duy
+ */
 public class Word {
 
     private String word_target;
