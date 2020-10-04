@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class DictionaryCommandline {
 
@@ -10,7 +11,7 @@ public class DictionaryCommandline {
     public void showAllWords() {
         System.out.println("No  | English           | Vietnamese");
         for (int i = 0; i < dictionary_manager.dictionary.words.size(); i++) {
-            System.out.println((i + 1) + "  | " + dictionary_manager.dictionary.words.get(i).getWord_target() + "           " + "| " + dictionary_manager.dictionary.words.get(i).getWord_explain());
+            dictionary_manager.showWord(i, i);
         }
     }
 
@@ -26,19 +27,29 @@ public class DictionaryCommandline {
      * Phương thức thao tác nâng cao gồm nhập dữ liệu bằng file rồi xuất tất cả ra màn hình.
      * @throws FileNotFoundException
      */
-    public void dictionaryAdvanced() throws FileNotFoundException {
+    public void dictionaryAdvanced() {
         dictionary_manager.insertFromFile();
         showAllWords();
         dictionary_manager.dictionaryLookup();
+        dictionarySearcher();
     }
 
-    /**
-     * Hàm main.
-     * @param args
-     * @throws FileNotFoundException
-     */
-    public static void main(String[] args) throws FileNotFoundException {
-        DictionaryCommandline dictionary_commandline = new DictionaryCommandline();
-        dictionary_commandline.dictionaryAdvanced();
+    void dictionarySearcher() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Bạn muốn tìm:  ");
+        String keyword = input.nextLine();
+        boolean has_keyword_you_search = false;
+        int results = 0;
+
+        for (int i = 0; i < dictionary_manager.dictionary.words.size(); i++) {
+            if (dictionary_manager.dictionary.words.get(i).getWord_target().contains(keyword)) {
+                dictionary_manager.showWord(results, i);
+                results++;
+                has_keyword_you_search = true;
+            }
+        }
+        if(!has_keyword_you_search) {
+            System.out.println("Xin lỗi, không có từ này!");
+        }
     }
 }

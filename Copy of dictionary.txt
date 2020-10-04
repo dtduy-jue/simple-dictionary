@@ -5,6 +5,4 @@ cup	cốc
 iron	bàn là
 teacher	giáo viên
 source	nguồn
-a cup of tea	một cốc trà
 in for a penny, in for a pound	đâm lao theo lao
-paper	giấy

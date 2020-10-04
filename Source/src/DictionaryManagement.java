@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -31,16 +30,20 @@ public class DictionaryManagement {
      *  Phương thức nhập dữ liệu vào từ điển bằng file.
      * @throws FileNotFoundException
      */
-    public void insertFromFile() throws FileNotFoundException {
-        Scanner dic_data_scanner = new Scanner(new File("D:\\ZuE\\STUDY\\CODING\\Java\\Dictionary\\dictionary.txt"));
-        String dic_data_lines = "";
-        while (dic_data_scanner.hasNextLine()) {
-            dic_data_lines = dic_data_scanner.nextLine();
-            String[] definition = dic_data_lines.split("\t", 2);
-            Word word_need_to_add = new Word(definition[0], definition[1]);
-            dictionary.words.add(word_need_to_add);
+    public void insertFromFile() {
+        try {
+            Scanner dic_data_scanner = new Scanner(new File("D:\\ZuE\\STUDY\\CODING\\Java\\Dictionary\\dictionary.txt"));
+            String dic_data_lines;
+            while (dic_data_scanner.hasNextLine()) {
+                dic_data_lines = dic_data_scanner.nextLine();
+                String[] definition = dic_data_lines.split("\t", 2);
+                Word word_need_to_add = new Word(definition[0], definition[1]);
+                dictionary.words.add(word_need_to_add);
+            }
+            dic_data_scanner.close();
+        } catch (FileNotFoundException file_not_found_e) {
+            file_not_found_e.printStackTrace();
         }
-        dic_data_scanner.close();
     }
 
     /**
@@ -55,13 +58,30 @@ public class DictionaryManagement {
         for (Word w : dictionary.words) {
             if (w.getWord_target().equals(word_need_to_lookup)) {
                 System.out.print("Nghĩa của từ đó là:  ");
-                System.out.print(w.getWord_explain());
+                System.out.println(w.getWord_explain());
                 has_lookup_word = true;
             }
         }
         if (!has_lookup_word) {
-            System.out.println("Xin lỗi, từ điển không có từ này!");
+            System.out.println("Xin lỗi, từ điển không có từ này!a");
         }
     }
 
+    public void dictionaryExportToFile() {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("Copy of dictionary.txt"));
+            String current_line = "";
+            for (int i = 0; i < dictionary.words.size(); i++) {
+                current_line = dictionary.words.get(i).getWord_target() + "\t" + dictionary.words.get(i).getWord_explain() + "\n";
+                writer.write(current_line);
+            }
+            writer.close();
+        } catch (IOException io_e) {
+            io_e.printStackTrace();
+        }
+    }
+
+    public void showWord(int id, int word_index) {
+        System.out.println((id + 1) + "  | " + dictionary.words.get(word_index).getWord_target() + "           " + "| " + dictionary.words.get(word_index).getWord_explain());
+    }
 }
