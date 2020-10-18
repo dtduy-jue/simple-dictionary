@@ -32,7 +32,7 @@ public class DictionaryManagement {
      */
     public void insertFromFile() {
         try {
-            Scanner dic_data_scanner = new Scanner(new File("D:\\ZuE\\STUDY\\CODING\\Java\\Dictionary\\dictionary.txt"));
+            Scanner dic_data_scanner = new Scanner(new File("dictionary.txt"));
             String dic_data_lines;
             while (dic_data_scanner.hasNextLine()) {
                 dic_data_lines = dic_data_scanner.nextLine();
@@ -55,7 +55,7 @@ public class DictionaryManagement {
         System.out.print("Bạn muốn tra cứu từ:  ");
         String word_need_to_lookup = input.nextLine();
         boolean has_lookup_word = false;
-        for (Word w : dictionary.words) {
+        for (Word w : Dictionary.words) {
             if (w.getWord_target().equals(word_need_to_lookup)) {
                 System.out.print("Nghĩa của từ đó là:  ");
                 System.out.println(w.getWord_explain());
@@ -66,6 +66,18 @@ public class DictionaryManagement {
             System.out.println("Xin lỗi, từ điển không có từ này!a");
         }
     }
+
+    public void addDictionary() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Bạn muốn thêm: ");
+        String[] added_definition = new String[2];
+        added_definition[0] = input.nextLine();
+        System.out.println("Nghĩa của từ đó là: ");
+        added_definition[1] = input.nextLine();
+        Word word_need_to_add = new Word(added_definition[0], added_definition[1]);
+        dictionary.words.add(word_need_to_add);
+    }
+
 
     public void dictionaryExportToFile() {
         try {

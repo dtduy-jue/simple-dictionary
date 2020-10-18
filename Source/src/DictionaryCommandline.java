@@ -41,8 +41,8 @@ public class DictionaryCommandline {
         boolean has_keyword_you_search = false;
         int results = 0;
 
-        for (int i = 0; i < dictionary_manager.dictionary.words.size(); i++) {
-            if (dictionary_manager.dictionary.words.get(i).getWord_target().contains(keyword)) {
+        for (int i = 0; i < Dictionary.words.size(); i++) {
+            if (Dictionary.words.get(i).getWord_target().contains(keyword)) {
                 dictionary_manager.showWord(results, i);
                 results++;
                 has_keyword_you_search = true;
