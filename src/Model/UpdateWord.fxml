@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="200.0" maxWidth="500.0" minHeight="200.0" minWidth="500.0" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #1F1E33;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Model.Controller_Update">
+    <children>
+        <TextField fx:id="textField_updateWord_target" layoutX="232.0" layoutY="40.0" prefHeight="25.0" prefWidth="227.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="40.0" />
+        <TextField fx:id="textField_updateWord_explain" layoutX="232.0" layoutY="99.0" prefHeight="25.0" prefWidth="227.0" AnchorPane.bottomAnchor="76.0" AnchorPane.rightAnchor="41.0" />
+        <Label layoutX="50.0" layoutY="43.0" text="Từ bạn muốn sửa nghĩa:" textFill="#f1f1f1" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="43.0">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+        <Label layoutX="71.0" layoutY="102.0" text="Nghĩa mới..." textFill="#f2f2f2" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="71.0">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button fx:id="button_update" layoutX="200.0" layoutY="151.0" mnemonicParsing="false" onAction="#updateWord" prefHeight="30.0" prefWidth="64.0" text="Sửa">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="label_notExisted" layoutX="321.0" layoutY="154.0" text="Không có từ này!" textFill="RED" visible="false" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="58.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_pleaseTypeSomething" layoutX="320.0" layoutY="154.0" text="Vui lòng nhập từ." textFill="RED" visible="false">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_updateSuccessfully" layoutX="338.0" layoutY="158.0" text="Sửa thành công!" textFill="RED" visible="false" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="75.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>
