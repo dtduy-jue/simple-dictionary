@@ -1,3 +1,3 @@
-# Dictionary
-Big homework when I was an early sophomore.<br>
-This helps me practice with Java and JavaFX.
+# Simple Dictionary
+Major project in OOP programming course.<br>
+This mess helps me practice with OOP concepts, as well as Java and JavaFX.
